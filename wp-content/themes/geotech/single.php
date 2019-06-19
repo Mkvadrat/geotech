@@ -204,20 +204,12 @@ get_header();
                         </div>
 
 						<div class="form" id="send-form">
-							<p class="title-form"><span>We will contact you within 24 hours</span> <a href="mailto:<?php echo $email; ?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/icons/feedback-icon-4.png" alt="">Email</a></p>
-							<p><label>* Name:</label><input type="text" id="name" placeholder="Type in your name"><label>* E-mail:</label><input type="text" id="email" placeholder="Type in your Email address"></p>
-							<p><label>* Country:</label><input type="text" id="country" placeholder="Country:">
-	
-								<label>* Tel:</label><input type="text" id="phone" placeholder="Tel">
-							</p>
-							<p>
-								<label>* Message:</label>
-								<span class="boxtextarea">
-									<textarea placeholder="Enter the details of your inquiry such as product name, color, FOB, etc." id="comment"></textarea>
-									<label><input type="checkbox" id="checkbox">Yes, I would like to receive future communications (such as email) from Logis-Geotech extended enterprise and dealer network.</label>
-									<input type="submit" value="submit" onclick="SendForm();">
-								</span>
-							</p>
+                            <?php
+                                $forms_a = getMeta('callback_product_page');
+                                if($forms_a){
+                                    echo do_shortcode('[contact-form-7 id=" ' . $forms_a . ' "]'); 
+                                }
+                            ?>
 						</div>
                     </div>
 
@@ -278,49 +270,5 @@ get_header();
 
     </main>
     <!-- END MAIN-OBJECT -->
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$("a.ancLinks").click(function () { 
-	  var elementClick = $(this).attr("href");
-	  var destination = $(elementClick).offset().top;
-	  $('html,body').animate( { scrollTop: destination }, 1100 );
-	  return false;
-  });
-});
-</script>
-
-<script type="text/javascript">
-//форма обратной связи
-function SendForm() {
-    if($("#checkbox").is(':checked')){
-        var check = $('#checkbox').val();
-    }
-    
-	var data = {
-		'action': 'SendForm',
-		'name' : $('#name').val(),
-		'email' : $('#email').val(),
-        'country' : $('#country').val(),
-		'comment' : $('#comment').val(),
-        'phone' : $('#phone').val(),
-        'checkbox' : check,
-	};
-	$.ajax({
-		url:'http://' + location.host + '/wp-admin/admin-ajax.php',
-		data:data,
-		type:'POST',
-		success:function(data){
-			swal(data.message);
-		}
-	});
-};
-</script>
-
-<script type="text/javascript">
-        $(".button-video").click(function() {
-            $(".first-lavel").slideToggle();
-        });
-    </script>
 
 <?php get_footer(); ?>

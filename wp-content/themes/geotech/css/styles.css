@@ -740,7 +740,11 @@ p {
     margin: 8px 0 0px;}
     .header .logo a {
       text-decoration: none; }
+      .header .logo a img:first-child {
+      	width: 214px;
+      }
       .header .logo a img:last-child {
+      	width: 41px;
         text-decoration: none;
         -webkit-animation: logo 2s;
         -moz-animation: logo 2s;
@@ -760,7 +764,7 @@ p {
   .header .header-phone {
     display: inline-block;
     vertical-align: top;
-    margin: 18px 0 0 30px; }
+    margin: 22px 0 0 30px; }
     .header .header-phone a {
       font-family: "MyriadPro-Regular";
       font-size: 24px;
@@ -780,7 +784,7 @@ p {
         display: block;
         padding: 15px 15px 28px;
         font-family: "MyriadPro-Regular";
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         line-height: 20px;
         letter-spacing: 0px;
@@ -2085,4 +2089,34 @@ p {
 	display: block;
 	width: 320px;
 	margin: 0 auto  20px;
+}
+.header nav ul li:nth-child(3) li a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 15px 45px 15px 60px;
+    text-transform: none;
+}
+.header nav ul li:nth-child(3) li a img {
+    position: absolute;
+    left: 20px;
+    width: 25px;
+    top: 50%;
+    margin-top: -12px;
+}
+.header nav ul li:nth-child(3) li a:hover {
+    background: #e0dace;
+    color: #7b2242;
+    -webkit-box-shadow: inset 0px -1px 0px 0px #7b2242;
+    box-shadow: inset 0px -1px 0px 0px #7b2242;
+}
+/*изменить в media.css*/
+@media only screen and (max-width: 1359px) {
+	.header nav ul li a {
+		padding: 15px 5px 28px;
+	}
+}
+
+.gallery-item a img{
+  height: auto;
 }

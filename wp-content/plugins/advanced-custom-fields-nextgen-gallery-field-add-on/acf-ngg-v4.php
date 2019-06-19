@@ -17,7 +17,7 @@ class acf_nggallery_field_plugin
    *  @since: 3.6
    *  @created: 1/04/13
    */
-
+   
    function __construct()
    {
       $mofile = trailingslashit(dirname(__File__)) . 'lang/' . self::L10N_DOMAIN . '-' . get_locale() . '.mo';
@@ -29,7 +29,7 @@ class acf_nggallery_field_plugin
    
 }
 
-//error_log("calling Plugin Construct");
+error_log("calling Plugin Construct");
 new acf_nggallery_field_plugin();
 
 class ACF_NGGallery_Field extends acf_field
@@ -126,7 +126,7 @@ class ACF_NGGallery_Field extends acf_field
             ?>
          </td>
       </tr>
-
+        
         <tr class="field_option field_option_<?php echo $this->name; ?>">
          <td class="label">
             <label><?php _e( 'Nextgen Type' , $this->domain ); ?></label>

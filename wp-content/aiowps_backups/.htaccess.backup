@@ -3,6 +3,24 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/oko-3_gpr_with_control_unit	http://geotechru.com/oko-3-gpr-with-control-processing-unit-9/
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/oko-2_gpr_with_control_processing_unit/	http://geotechru.com/oko-3-gpr-with-control-processing-unit-8/
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/construction_scan_1700 http://geotechru.com/oko-3-gpr-with-control-processing-unit-6/
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/construction_scan_2500 http://geotechru.com/oko-3-gpr-with-control-processing-unit-5/
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/gpr-detector http://geotechru.com/oko-3-gpr-with-control-processing-unit/
+Redirect 301 /market/geophysical_equipment/seismograph	http://geotechru.com/multichannel-seismograph-lakkolit-mt/
+Redirect 301 /market/geophysical_equipment/seismograph/lakkolit_x-m4_digital_multichannel_seismic_station http://geotechru.com/lakkolit-x-m4-digital-multichannel-seismic-station/
+Redirect 301 /market/geophysical_equipment/seismograph/delta-03_digital_seismic_signal_recorder	http://geotechru.com/delta-03-digital-seismic-signal-recorder/
+Redirect 301 /market/geophysical_survey/road_inspection	http://geotechru.com/products/geophysical-survey/road-inspection/
+Redirect 301 /market/geophysical_survey/concrete_ndt_civil_engineering http://geotechru.com/products/geophysical-survey/civil-engineering/
+Redirect 301 /market/geophysical_survey/microzonation http://geotechru.com/products/geophysical-survey/microzonation/
+Redirect 301 /market/geophysical_survey/railway_inspection http://geotechru.com/products/geophysical-survey/railway-inspection/
+Redirect 301 /market/geophysical_survey/runway_inspection http://geotechru.com/products/geophysical-survey/runway-inspection/
+Redirect 301 /market/geophysical_survey/basins_inspection http://geotechru.com/products/geophysical-survey/basins-inspection/
+Redirect 301 /security/explosive_detection_system/nqr-k_explosive_detection_system http://geotechru.com/products/security/
+Redirect 301 /market/geophysical_equipment/ground_penetrating_radar_gpr/oko-2_gpr_with_control_processing_unit/	http://geotechru.com/oko-3-gpr-with-control-processing-unit-3/
+Redirect 301 /market/geophysical_equipment/seismograph	http://geotechru.com/products/geophysical-equipment/seismograph/
+
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f

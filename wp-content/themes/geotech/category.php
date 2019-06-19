@@ -60,8 +60,8 @@ get_header();
                     <?php
                         $term = get_queried_object();
                         $cat_id = $term->term_id;
-                        $cat_description = get_option('category_'.$cat.'_description_product_category');
-                        $cat_download_id = get_option('category_'.$cat.'_download_product_category');
+                        $cat_description = get_term_meta(get_queried_object()->term_id, 'description_product_category', true);
+                        $cat_download_id = get_term_meta(get_queried_object()->term_id, 'download_product_category', true);
                         $cat_download_link = getAttachment( $cat_download_id );
                         $cat_email = getMeta('email_ru_contact_page'); 
                     ?>
@@ -165,12 +165,6 @@ get_header();
         </div>
 
     </main>
-
-    <script type="text/javascript">
-        $(".button-video").click(function() {
-            $(".first-lavel").slideToggle();
-        });
-    </script>
 
     <!-- END MAIN-OBJECT-LIST-MAIN -->
 

@@ -3,9 +3,9 @@
 Plugin Name: Redirection
 Plugin URI: https://redirection.me/
 Description: Manage all your 301 redirects and monitor 404 errors
-Version: 2.10.1
+Version: 4.3.1
 Author: John Godley
-Author URI: http://urbangiraffe.com
+Author URI: https://johngodley.com
 Text Domain: redirection
 Domain Path: /locale
 ============================================================================================================
@@ -21,7 +21,7 @@ For full license details see license.txt
 ============================================================================================================
 */
 
-define( 'REDIRECTION_DB_VERSION', '2.3.3' );     // DB schema version. Only change if DB needs changing
+define( 'REDIRECTION_DB_VERSION', '4.1' );     // DB schema version. Only change if DB needs changing
 define( 'REDIRECTION_FILE', __FILE__ );
 define( 'REDIRECTION_DEV_MODE', false );
 
@@ -29,15 +29,28 @@ if ( ! defined( 'REDIRECTION_FLYING_SOLO' ) ) {
 	define( 'REDIRECTION_FLYING_SOLO', apply_filters( 'redirection_flying_solo', true ) );
 }
 
-include dirname( __FILE__ ).'/redirection-version.php';
-include dirname( __FILE__ ).'/redirection-settings.php';
-include dirname( __FILE__ ).'/models/redirect.php';
-include dirname( __FILE__ ).'/models/module.php';
-include dirname( __FILE__ ).'/models/log.php';
-include dirname( __FILE__ ).'/models/flusher.php';
-include dirname( __FILE__ ).'/models/match.php';
-include dirname( __FILE__ ).'/models/action.php';
-include dirname( __FILE__ ).'/models/request.php';
+// This file must support PHP < 5.4 so as not to crash
+if ( version_compare( phpversion(), '5.4' ) < 0 ) {
+	add_action( 'plugin_action_links_' . basename( dirname( REDIRECTION_FILE ) ) . '/' . basename( REDIRECTION_FILE ), 'red_deprecated_php', 10, 4 );
+
+	function red_deprecated_php( $links ) {
+		/* translators: 1: PHP version */
+		array_unshift( $links, '<a href="https://redirection.me/support/problems/php-version/" style="color: red; text-decoration: underline">' . sprintf( __( 'Disabled! Detected PHP %s, need PHP 5.4+', 'redirection' ), phpversion() ) . '</a>' );
+		return $links;
+	}
+
+	return;
+}
+
+include dirname( __FILE__ ) . '/redirection-version.php';
+include dirname( __FILE__ ) . '/redirection-settings.php';
+include dirname( __FILE__ ) . '/models/redirect.php';
+include dirname( __FILE__ ) . '/models/module.php';
+include dirname( __FILE__ ) . '/models/log.php';
+include dirname( __FILE__ ) . '/models/flusher.php';
+include dirname( __FILE__ ) . '/models/match.php';
+include dirname( __FILE__ ) . '/models/action.php';
+include dirname( __FILE__ ) . '/models/request.php';
 
 function red_is_wpcli() {
 	if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -48,10 +61,6 @@ function red_is_wpcli() {
 }
 
 function red_is_admin() {
-	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-		return true;
-	}
-
 	if ( is_admin() ) {
 		return true;
 	}
@@ -59,11 +68,30 @@ function red_is_admin() {
 	return false;
 }
 
-if ( red_is_wpcli() ) {
-	include dirname( __FILE__ ).'/redirection-admin.php';
-    include dirname( __FILE__ ).'/redirection-cli.php';
-} elseif ( red_is_admin() ) {
-	include dirname( __FILE__ ).'/redirection-admin.php';
-} else {
-	include dirname( __FILE__ ).'/redirection-front.php';
+function red_start_rest() {
+	include_once dirname( __FILE__ ) . '/redirection-admin.php';
+	include_once dirname( __FILE__ ) . '/redirection-api.php';
+
+	Redirection_Api::init();
+	Redirection_Admin::init();
+
+	remove_action( 'rest_api_init', 'red_start_rest' );
 }
+
+function redirection_locale() {
+	load_plugin_textdomain( 'redirection', false, dirname( plugin_basename( REDIRECTION_FILE ) ) . '/locale/' );
+}
+
+if ( red_is_admin() || red_is_wpcli() ) {
+	include_once dirname( __FILE__ ) . '/redirection-admin.php';
+	include_once dirname( __FILE__ ) . '/redirection-api.php';
+} else {
+	include_once dirname( __FILE__ ) . '/redirection-front.php';
+}
+
+if ( red_is_wpcli() ) {
+	include_once dirname( __FILE__ ) . '/redirection-cli.php';
+}
+
+add_action( 'rest_api_init', 'red_start_rest' );
+add_action( 'init', 'redirection_locale' );

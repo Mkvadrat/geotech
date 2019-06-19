@@ -9,7 +9,7 @@ Version: 1.0
 */
 ?>
 
-   <!-- START FOOTER -->
+    <!-- START FOOTER -->
     <footer class="footer">
         <div class="container-fluid links-line">
             <div class="container">

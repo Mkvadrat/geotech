@@ -80,7 +80,7 @@ get_header();
 				
             </div>
             <div class="col-md-12 col-lg-4">
-                <p class="title-uppercase">Guarantee</p>
+                <p class="title-uppercase">Geophysical Survey</p>
                 <div class="guarantee-description">
 					
 				<?php echo wpautop(getMeta('guarantee_main_page')); ?>
@@ -111,7 +111,7 @@ get_header();
 				<?php foreach($list_news as $news){ ?>
 				<?php
 				$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($news->ID), 'full');
-				$descr = wpautop(stripcslashes( wp_trim_words( $news->post_content, 45, '...' ) ), $br = false);
+				$descr = wpautop(stripcslashes( wp_trim_words( $news->post_content, 30, '...' ) ), $br = false);
 				$link = get_permalink($news->ID);
 				?>
                 <div class="col-md-3">
@@ -166,73 +166,5 @@ get_header();
 		}
 	?>
     <!-- END GALERY -->
-	
-<script>
-    $(document).ready(function(){
-        $('.about-slider').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        autoplay:false,
-        smartSpeed:2000,
-        autoplayTimeout:5000,
-        dots:false,
-        stopOnHover:true,
-        navigationText:["",""],
-        rewindNav:true,
-        pagination:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:1
-            },
-            1000:{
-                items:1
-            }
-        }
-        });
-
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-        $('.our-direction-slider').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        autoplay:false,
-        smartSpeed:1000,
-        autoplayTimeout:5000,
-        dots:false,
-        stopOnHover:true,
-        navigationText:["",""],
-        rewindNav:true,
-        pagination:true,
-        responsive:{
-            320:{
-                items:3
-            },
-            400:{
-                items:3
-            },
-            580:{
-                items:3
-            },
-            768:{
-                items:4
-            },
-            991:{
-                items:6
-            },
-            1360:{
-                items:8
-            }
-        }
-        });
-    });
-</script>
 	
 <?php get_footer(); ?>

@@ -27,7 +27,7 @@ Follow variables are useable :
 		    <div class="owl-carousel owl-theme galery">
 					<?php foreach ( $images as $image ) : ?>
 					<div>
-                        <a class="fancybox" rel="galery" href="<?php echo nextgen_esc_url($image->imageURL); ?>">
+                        <a class="fancybox" rel="galery"data-fancybox="gallery" href="<?php echo nextgen_esc_url($image->imageURL); ?>">
                            <img src="<?php echo nextgen_esc_url($image->thumbnailURL); ?>" alt="<?php echo esc_attr($image->alttext); ?>">
                         </a>
                     </div>
@@ -36,41 +36,5 @@ Follow variables are useable :
             </div>
         </div>
     </div>
-	
-<script>
-    $(document).ready(function(){
-        $('.galery').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        autoplay:false,
-        smartSpeed:2000,
-        autoplayTimeout:5000,
-        dots:false,
-        stopOnHover:true,
-        navigationText:["",""],
-        rewindNav:true,
-        pagination:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:4
-            }
-        }
-        });
-
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".fancybox").fancybox();
-    });
-</script>
 	
 <?php endif; ?>

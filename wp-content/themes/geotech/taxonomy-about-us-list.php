@@ -65,15 +65,16 @@ get_header();
                 </div>
 
 				<?php
-					$term = get_queried_object();
-					$cat_id = $term->term_id;
-					$cat_data = get_option("category_$cat_id");
+                    $term = get_queried_object();
+                    $cat_id = $term->term_id;
+                    $cat_title = get_term_meta($cat_id, 'title_for_categories_about_us_page');
+                    $cat_descr = get_term_meta($cat_id, 'text_for_categories_about_us_page');
 				?>
 				
                 <div class="col-md-9">
-                    <p class="title-uppercase"><?php echo $cat_data['title_for_categories_about_us_page']; ?></p>
+                    <p class="title-uppercase"><?php echo $cat_title[0]; ?></p>
 
-					<?php echo wpautop(stripcslashes( $cat_data['text_for_categories_about_us_page'] ), $br = false); ?>
+					<?php echo wpautop(stripcslashes( $cat_descr[0] ), $br = false); ?>
                 </div>
 
                 <div class="col-md-3 mobile-sidebar">

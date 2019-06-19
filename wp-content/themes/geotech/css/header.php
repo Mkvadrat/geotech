@@ -69,7 +69,7 @@ Version: 1.0
 	
 	<!-- OTHER -->
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/sweetalert.min.js"></script>
-	
+	<meta name="google-site-verification" content="ZZDwo44DvZVHREyQ9QkImKq3EGz7Mq9IY-3_zl447eE" />
 	<?php wp_head(); ?>
 </head>
 <body>

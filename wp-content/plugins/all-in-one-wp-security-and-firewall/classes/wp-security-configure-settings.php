@@ -1,4 +1,7 @@
 <?php
+if(!defined('ABSPATH')){
+    exit;//Exit if accessed directly
+}
 
 class AIOWPSecurity_Configure_Settings
 {    
@@ -44,6 +47,7 @@ class AIOWPSecurity_Configure_Settings
         $aio_wp_security->configs->set_value('aiowps_enable_login_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_enable_custom_login_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_enable_woo_login_captcha','');//Checkbox
+        $aio_wp_security->configs->set_value('aiowps_enable_woo_lostpassword_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_enable_woo_register_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_enable_lost_password_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_captcha_secret_key',AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20));//Hidden secret value which will be used to do some captcha processing. This will be assigned a random string generated when captcha settings saved
@@ -118,6 +122,8 @@ class AIOWPSecurity_Configure_Settings
         $aio_wp_security->configs->set_value('aiowps_enable_comment_captcha','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_enable_autoblock_spam_ip','');//Checkbox
         $aio_wp_security->configs->set_value('aiowps_spam_ip_min_comments_block','');
+        $aio_wp_security->configs->set_value('aiowps_enable_bp_register_captcha','');
+        $aio_wp_security->configs->set_value('aiowps_enable_bbp_new_topic_captcha','');//Checkbox
         
         //Filescan features
         //File change detection feature
@@ -135,10 +141,20 @@ class AIOWPSecurity_Configure_Settings
         $aio_wp_security->configs->set_value('aiowps_copy_protection','');//Checkbox
         //Prevent others from dislaying your site in iframe
         $aio_wp_security->configs->set_value('aiowps_prevent_site_display_inside_frame','');//Checkbox
-       //Prevent users enumeration
+        //Prevent users enumeration
         $aio_wp_security->configs->set_value('aiowps_prevent_users_enumeration','');//Checkbox
+
+        //REST API Security
+        $aio_wp_security->configs->set_value('aiowps_disallow_unauthorized_rest_requests','');//Checkbox
         
-                
+        //IP retrieval setting
+        $aio_wp_security->configs->set_value('aiowps_ip_retrieve_method','0');//default is $_SERVER['REMOTE_ADDR']
+           
+        // Google reCaptcha
+        $aio_wp_security->configs->set_value('aiowps_recaptcha_site_key','');
+        $aio_wp_security->configs->set_value('aiowps_recaptcha_secret_key','');
+        $aio_wp_security->configs->set_value('aiowps_default_recaptcha','');//Checkbox
+        
         //TODO - keep adding default options for any fields that require it
         
         //Save it
@@ -188,6 +204,7 @@ class AIOWPSecurity_Configure_Settings
         $aio_wp_security->configs->add_value('aiowps_enable_custom_login_captcha','');//Checkbox
         $aio_wp_security->configs->add_value('aiowps_enable_woo_login_captcha','');//Checkbox
         $aio_wp_security->configs->add_value('aiowps_enable_woo_register_captcha','');//Checkbox
+        $aio_wp_security->configs->add_value('aiowps_enable_woo_lostpassword_captcha','');//Checkbox
         $aio_wp_security->configs->add_value('aiowps_captcha_secret_key',AIOWPSecurity_Utility::generate_alpha_numeric_random_string(20));//Hidden secret value which will be used to do some captcha processing. This will be assigned a random string generated when captcha settings saved
 
         //User registration
@@ -257,6 +274,8 @@ class AIOWPSecurity_Configure_Settings
         $aio_wp_security->configs->add_value('aiowps_enable_comment_captcha','');//Checkbox
         $aio_wp_security->configs->add_value('aiowps_enable_autoblock_spam_ip','');//Checkbox
         $aio_wp_security->configs->add_value('aiowps_spam_ip_min_comments_block','');
+        $aio_wp_security->configs->add_value('aiowps_enable_bp_register_captcha','');
+        $aio_wp_security->configs->add_value('aiowps_enable_bbp_new_topic_captcha','');//Checkbox
 
 
         //Filescan features
@@ -278,6 +297,16 @@ class AIOWPSecurity_Configure_Settings
         //Prevent users enumeration
         $aio_wp_security->configs->add_value('aiowps_prevent_users_enumeration','');//Checkbox
 
+       //REST API Security
+        $aio_wp_security->configs->add_value('aiowps_disallow_unauthorized_rest_requests','');//Checkbox
+        
+        //IP retrieval setting
+        $aio_wp_security->configs->add_value('aiowps_ip_retrieve_method','0');//default is $_SERVER['REMOTE_ADDR']
+        
+        // Google reCaptcha
+        $aio_wp_security->configs->add_value('aiowps_recaptcha_site_key','');
+        $aio_wp_security->configs->add_value('aiowps_recaptcha_secret_key','');
+        $aio_wp_security->configs->add_value('aiowps_default_recaptcha','');//Checkbox
         
         //TODO - keep adding default options for any fields that require it
         

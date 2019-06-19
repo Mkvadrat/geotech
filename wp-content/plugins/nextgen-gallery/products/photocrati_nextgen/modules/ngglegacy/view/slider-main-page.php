@@ -31,34 +31,5 @@ Follow variables are useable :
         </div>
 		<?php endforeach; ?>
     </div>
-
-<script>
-    $(document).ready(function(){
-        $('.top-slider').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        autoplay:false,
-        smartSpeed:1000,
-        autoplayTimeout:5000,
-        dots:true,
-        stopOnHover:true,
-        navigationText:["",""],
-        rewindNav:true,
-        pagination:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:1
-            },
-            1000:{
-                items:1
-            }
-        }
-        });
-    });
-</script>
 	
 <?php endif; ?>
