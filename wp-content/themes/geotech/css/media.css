@@ -136,6 +136,14 @@
 }
 
 /* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.row.row-grid{
+	display: flex;
+}
+.news-block .row.row-grid .news {
+    height: 100%;
+}
+}
 @media only screen and (max-width : 992px) {
 
 	.desctop-sidebar {

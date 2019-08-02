@@ -78,7 +78,11 @@ Version: 1.0
                         </a>
                     </div>
                     <div class="header-phone">
-                        <a href="tel: <?php echo getMeta('phone_header_main_page'); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo getMeta('phone_header_main_page'); ?></a>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+						<div>
+							<a href="tel:<?php echo(preg_replace("/[^0-9]/", '', getMeta('phone_header_main_page'))) ?>"><?php echo getMeta('phone_header_main_page'); ?></a>
+							<a href="tel:<?php echo(preg_replace("/[^0-9]/", '', getMeta('phone_header_main_page_second'))) ?>"><?php echo getMeta('phone_header_main_page_second'); ?></a>
+						</div>
                     </div>
                 </div>
                 <div class="col-md-7">

@@ -42,7 +42,7 @@ get_header();
 	<div class="container about-guarantee">
         <div class="row">
             <div class="col-md-12 col-lg-8">
-                <p class="title-uppercase">About company</p>
+                <p class="title-uppercase">О компании</p>
 				<?php
 					$args = array(
 						'numberposts' => 5,
@@ -71,7 +71,7 @@ get_header();
                         <div class="description-slide">
                             <p class="small-title-bold"><?php echo $list->post_title; ?></p>
                             <?php echo $descr; ?>
-							<p><a class="more" href="<?php echo $link; ?>">Learn More</a></p>
+							<p><a class="more" href="<?php echo $link; ?>">Подробнее</a></p>
                         </div>
                     </div>
 					<?php } ?>
@@ -80,7 +80,7 @@ get_header();
 				
             </div>
             <div class="col-md-12 col-lg-4">
-                <p class="title-uppercase">Geophysical Survey</p>
+                <p class="title-uppercase">Геофизические изыскания</p>
                 <div class="guarantee-description">
 					
 				<?php echo wpautop(getMeta('guarantee_main_page')); ?>
@@ -106,8 +106,10 @@ get_header();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p class="title-uppercase">company's news</p>
+                    <p class="title-uppercase">Новости компании</p>
                 </div>
+            </div>
+			<div class="row row-grid">
 				<?php foreach($list_news as $news){ ?>
 				<?php
 				$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($news->ID), 'full');
@@ -117,14 +119,14 @@ get_header();
                 <div class="col-md-3">
                     <div class="news">
 						<?php if(!empty($image_url)){ ?>
-							<img src="<?php echo $image_url[0]; ?>" alt="<?php echo get_post_meta( get_post_thumbnail_id($news->ID), '_wp_attachment_image_alt', true ); ?>">
+							<div class="news__img" style="background-image: url('<?php echo $image_url[0]; ?>');"></div>
 						<?php }else{ ?>
-							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/news-1.jpg">
+							<div class="news__img" style="background-image: url('<?php echo esc_url( get_template_directory_uri() ); ?>/images/news-1.jpg');"></div>
 						<?php } ?>
 						
                         <p class="small-title"><?php echo $news->post_title; ?></p>
 						<?php echo $descr; ?>
-					    <a class="more" href="<?php echo $link; ?>">Learn More</a>
+					    <a class="more" href="<?php echo $link; ?>">Подробнее</a>
                     </div>
                 </div>
 				<?php } ?>
@@ -141,18 +143,18 @@ get_header();
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/icons/training.png" alt="">
-                    <p class="small-title">Training</p>
-                    <p>Our company provides implementation, warranty and post-warranty service support of manufacturing range of geophysical equipment.</p>
+                    <p class="small-title">Повышение квалификации</p>
+                    <p>Наша компания осуществляет внедрение, гарантийное и послегарантийное сервисное обслуживание производственного ассортимента геофизического оборудования.<br><a href="#" style="color:#680025">Подробнее</a></p>
                 </div>
                 <div class="col-md-4">
                     <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/icons/service.png" alt="">
-                    <p class="small-title">Service</p>
-                    <p>The reputation of “LogisGeotech” has been built on responsibilities to the clients for support and service maintenance of sold equipment.</p>
+                    <p class="small-title">Услуги</p>
+                    <p>Репутация компании «Логис-Геотех» многие годы строилась на обязательствах перед клиентами по сервисному обслуживанию и технической поддержке проданного оборудования.<br><a href="#" style="color:#680025">Подробнее</a></p>
                 </div>
                 <div class="col-md-4">
                     <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/icons/devepopment.png" alt="">
-                    <p class="small-title">Development / Manufacturing</p>
-                    <p>We is the leader of “OKO”-type GPR production, as well as seismic-acoustic and electro-investigating equipment in Russian Federation. </p>
+                    <p class="small-title">Разработка / Производство</p>
+                    <p>ГК «Логис-Геотех» является лидером по производству георадаров серии «ОКО», сейсмоакустического и электроразведочного оборудования в России. <br><a href="#" style="color:#680025">Подробнее</a></p>
                 </div>
             </div>
         </div>

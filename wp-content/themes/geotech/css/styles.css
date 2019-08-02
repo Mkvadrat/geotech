@@ -782,7 +782,7 @@ p {
       float: left; }
       .header nav ul li a {
         display: block;
-        padding: 15px 15px 28px;
+        padding: 15px 7px 28px;
         font-family: "MyriadPro-Regular";
         font-size: 14px;
         font-weight: 700;
@@ -910,13 +910,13 @@ p {
     top: 50%;
     margin-top: -50px; }
     .top-slider .description .title-slider {
-      max-width: 540px;
+      max-width: 570px;
       width: 100%;
       padding: 5px 10px;
       font-family: "MyriadPro-Regular";
-      font-size: 48px;
+      font-size: 30px;
       font-weight: 900;
-      line-height: 54px;
+      line-height: 34px;
       letter-spacing: 1px;
       color: #fff;
       text-transform: uppercase; }
@@ -1372,6 +1372,7 @@ p {
       .main-object .tabs-block .tab-content img {
         max-width: 100%;
         width: auto;
+		height: auto;
         margin-bottom: 20px; }
   .main-object .related-products aside {
     margin-top: 20px; }
@@ -1602,7 +1603,7 @@ p {
     color: #fff; }
 
 .main-object-list-main p:nth-child(2n+3) {
-  padding-bottom: 0; }
+  /*padding-bottom: 0;*/ }
 
 /*----- END MAIN-OBJECT-LIST-MAIN -----*/
 /*----- START MAIN-SEARCH -----*/
@@ -2049,6 +2050,39 @@ p {
 .row.page-bot div .row:nth-child(3) div {
     min-height:175px;
 }
+/**/
+.main-news-in .text-news .border-block img {
+    max-width: 100%;
+    height: auto;
+}
+
+.header nav ul li:nth-child(2) li a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    padding: 15px 45px 15px 60px;
+    text-transform: none;
+}
+.header nav ul li:nth-child(2) li a img {
+    position: absolute;
+    left: 20px;
+    width: 25px;
+    top: 50%;
+    margin-top: -12px;
+}
+.header nav ul li:nth-child(2) li a:hover {
+    background: #e0dace;
+    color: #7b2242;
+    -webkit-box-shadow: inset 0px -1px 0px 0px #7b2242;
+    box-shadow: inset 0px -1px 0px 0px #7b2242;
+}
+.news__img{
+	    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 180px;
+    margin-bottom: 20px;
+}
 @media (min-width:1360px) {
     .row.page-bot>.col-md-8>div.row:first-child>.col-md-12 {
         min-height: 40px;
@@ -2110,6 +2144,7 @@ p {
     -webkit-box-shadow: inset 0px -1px 0px 0px #7b2242;
     box-shadow: inset 0px -1px 0px 0px #7b2242;
 }
+
 /*изменить в media.css*/
 @media only screen and (max-width: 1359px) {
 	.header nav ul li a {
@@ -2119,4 +2154,28 @@ p {
 
 .gallery-item a img{
   height: auto;
+}
+.list-pages li a:hover,
+.list-pages li span.current{
+	background-color: #7b2242;
+    color: #fff;
+    box-shadow: none;
+}
+.header .header-phone{
+	    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin: 13px 0 0 30px;
+}
+.header .header-phone div{
+	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: right;
+}
+.header .header-phone i{
+margin-top: 7px;
+    margin-right: 5px;
+    flex: none;
+    font-size: 20px;
 }

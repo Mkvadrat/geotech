@@ -63,7 +63,7 @@ Version: 1.0
                     ?>
                     </div>
                     <div class="col-md-3">
-                        <p class="contacts-link"><a href="#">Contacts</a></p>
+                        <p class="contacts-link"><a href="#">Контакты</a></p>
                         <p><a href="tel: <?php echo getMeta('phone_footer_main_page'); ?>"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo getMeta('phone_footer_main_page'); ?></a></p>
                         <p><a href="email: <?php echo getMeta('email_footer_main_page'); ?>"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo getMeta('email_footer_main_page'); ?></a></p>
                         <ul class="social-links">
@@ -84,7 +84,7 @@ Version: 1.0
                         <p><?php echo getMeta('powered_footer_main_page'); ?></p>
                     </div>
                     <div class="col-md-6">
-                        <p class="made-by"><a href="http://mkvadrat.com/" target="_blank">Site developed in <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo-m2.jpg" alt=""></a></p>
+                        <p class="made-by"><a href="http://mkvadrat.com/" target="_blank">Сайт разработан в <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo-m2.jpg" alt=""></a></p>
                     </div>
                 </div>
             </div>

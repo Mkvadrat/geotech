@@ -436,8 +436,8 @@ add_action( 'init', 'create_taxonomies_about_us', 0 );
 //Вывод в админке раздела новости
 function register_post_type_news() {
 	$labels = array(
-	 'name' => 'News',
-	 'singular_name' => 'News',
+	 'name' => 'Новости',
+	 'singular_name' => 'Новости',
 	 'add_new' => 'Добавить новость',
 	 'add_new_item' => 'Добавить новую новость',
 	 'edit_item' => 'Редактировать новость',
@@ -669,14 +669,14 @@ add_action( 'pre_get_posts', 'parse_request_url_post' );
 ***********************************************************************************************************************************************************/
 function dimox_breadcrumbs() {
   /* === ОПЦИИ === */
-  $text['home'] = 'Home'; // текст ссылки "Главная"
+  $text['home'] = 'Главная'; // текст ссылки "Главная"
   $text['category'] = '%s'; // текст для страницы рубрики
   $text['search'] = 'Search results for "%s"'; // текст для страницы с результатами поиска
   $text['tag'] = 'Tagged with "%s"'; // текст для страницы тега
   $text['author'] = 'Authors articles %s'; // текст для страницы автора
   $text['404'] = 'Error 404'; // текст для страницы 404
-  $text['page'] = 'Page %s'; // текст 'Страница N'
-  $text['cpage'] = 'Comments page %s'; // текст 'Страница комментариев N'
+  $text['page'] = 'Страница %s'; // текст 'Страница N'
+  $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
 
   $wrap_before = '<ul>'; // открывающий тег обертки
   $wrap_after = '</ul>'; // закрывающий тег обертки

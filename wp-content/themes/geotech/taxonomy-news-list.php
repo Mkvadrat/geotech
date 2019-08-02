@@ -47,7 +47,7 @@ get_header();
             <div class="row">
 
                 <div class="col-md-9">
-                    <p class="title-uppercase">company news</p>
+                    <p class="title-uppercase">НОВОСТИ</p>
                     <div class="list-news">
 						<?php if($news_list){ ?>
 						<?php foreach($news_list as $news){ ?>
@@ -69,7 +69,7 @@ get_header();
                                 <p class="small-title-bold"><?php echo $news->post_title; ?></p>
                                 <p class="time"><time datetime="<?php echo $date; ?>"><?php echo $date; ?></time><span class="place"><?php echo $location; ?></span></p>
                                 <p><?php echo $descr; ?></p>
-                                <p class="more-block"><a class="more" href="<?php echo $link; ?>">Learn More</a></p>
+                                <p class="more-block"><a class="more" href="<?php echo $link; ?>">Узнать больше</a></p>
                             </div>
                         </div>
 						<?php } ?>
@@ -81,8 +81,8 @@ get_header();
 						$defaults = array(
 							'type' => 'array',
 							'prev_next'    => True,
-							'prev_text'    => __('last'),
-							'next_text'    => __('next'),
+							'prev_text'    => __('предыдущий'),
+							'next_text'    => __('следующий'),
 						);
 	
 						$pagination = paginate_links($defaults);
@@ -102,7 +102,7 @@ get_header();
 				
                 <div class="col-md-3 most-popular">
                     <aside>
-                        <p class="title-uppercase">MOST POPULAR</p>
+                        <p class="title-uppercase">САМЫЕ ПОПУЛЯРНЫЕ</p>
 						<?php if($most_popular){?>
 						<?php foreach($most_popular as $popular_news){ ?>
 						<?php $image_popular = wp_get_attachment_image_src( get_post_thumbnail_id($popular_news->ID), 'full'); ?>
@@ -116,7 +116,7 @@ get_header();
                             <div class="description">
                                 <p class="small-title-bold"><?php echo $popular_news->post_title; ?></p>
                                 <p><?php echo wp_trim_words( $popular_news->post_content, 30, '...' )?><p>
-								<a class="more" href="<?php echo get_permalink($popular_news->ID) ?>">Learn More</a></p>
+								<a class="more" href="<?php echo get_permalink($popular_news->ID) ?>">Узнать больше</a></p>
                             </div>
                         </div>
 						<?php } ?>

@@ -23,7 +23,7 @@ Follow variables are useable :
 	<div class="container galery-block">
         <div class="row">
             <div class="col-md-12">
-                <p class="title-uppercase">Gallery</p>
+                <p class="title-uppercase">Галерея</p>
 		    <div class="owl-carousel owl-theme galery">
 					<?php foreach ( $images as $image ) : ?>
 					<div>
